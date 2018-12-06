@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>
@@ -17,37 +18,54 @@
     <link rel="stylesheet" href="/css/style.css">
     <title>Codebusters</title>
 </head>
+<<<<<<< HEAD
 {{!-- <body id="home"> --}}
 <div class="canvas">
 
+=======
+
+{{!--
+
+<body id="home"> --}}
+>>>>>>> f9566894a474db98b7e78c31f7ea95b2bd65034d
 
     {{!-- NavBar --}}
     <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
+        <div class="container">
             <div class="navbar-header">
+                <a href="/"><button class="btn">Home Page</button></a>
             </div>
-
-            <ul class="nav navbar-nav navbar-right">
-                {{!-- Login --}}
-                {{#unless currentUser}}
-                    <button type="button" class="btn" data-toggle="modal" data-target="#myModal">
-                        <a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a>
-                    </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav navbar-right">
+                    {{!-- Login --}}
+                    <li class="nav-item">
+                        {{#unless currentUser}}
+                        <button type="button" class="btn" data-toggle="modal" data-target="#myModal">
+                            <a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                        </button>
+                    </li>
                     {{!-- Sign-Up --}}
-                    <button type="button" class="btn" data-toggle="modal" data-target="#secModal">
-                        <a href="#"><span class="glyphicon glyphicon-user"></span> Sign-Up</a>
-                    </button>
-                {{/unless}}
-                {{#if currentUser}}
+                    <li class="nav-item">
+                        <button type="button" class="btn" data-toggle="modal" data-target="#secModal">
+                            <a href="#"><span class="glyphicon glyphicon-user"></span> Sign-Up</a>
+                        </button>
+                    </li>
+                    {{/unless}}
+                    {{#if currentUser}}
                     {{!-- Logout --}}
-                    <button type="button" class="btn">
-                        <a href="/users/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a>
-                    </button>
-                    <button type="button" class="btn">
-                        You are logged in as {{currentUser.fullname}}
-                    </button>
-                {{/if}}
-            </ul>
+                    <li class="nav-item">
+                        <button type="button" class="btn">
+                            <a href="/users/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn" id="loggedIn">
+                            You are logged in as {{currentUser.fullname}}
+                        </button>
+                    </li>
+                    {{/if}}
+                </ul>
+            </div>
 
             {{!-- Modal Pop-Up for Login Button --}}
             <div class="modal" id="myModal">
@@ -66,20 +84,16 @@
                                 <div class="form-group">
                                     <label for="username">Username</label>
                                     <input type="username" class="form-control" id="username" placeholder="Enter your username"
-                                        name="username" required>
+                                        name="username" minlength="4" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control" id="password" placeholder="Enter password"
-                                        name="password" required>
+                                        name="password" minlength="4" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </form>
-                        </div>
-
-                        <!-- Modal footer for for Login Button-->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
@@ -101,15 +115,16 @@
                             <form action="/users/register" method="POST">
                                 <div class="form-group">
                                     <label for="fullname">Full Name</label>
-                                    <input type="fullname" class="form-control" placeholder="Enter your full name" name="fullname">
+                                    <input type="fullname" class="form-control" placeholder="Enter your full name" name="fullname" minlength="4" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="username">Username</label>
-                                    <input type="username" class="form-control" placeholder="Enter player name" name="username">
+                                    <input type="username" class="form-control" placeholder="Enter player name" name="username" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" placeholder="Enter password" name="password"  minlength="1" required>
+                                    <input type="password" class="form-control" placeholder="Enter password" name="password"
+                                        minlength="4" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
@@ -144,5 +159,6 @@
     </div>
 </div>
     <script src="/javascripts/main.js"></script>
-{{!-- </body> --}}
+</body>
+
 </html>

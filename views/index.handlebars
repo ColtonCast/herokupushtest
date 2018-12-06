@@ -1,22 +1,25 @@
 <body id="home">
-{{!-- Header jumbotron--}}
-<div class="jumbotron container panel">
-    <div class="container">
-        <div class="typewriter">
-            <h1>Codebusters</h1>
+    {{!-- Header jumbotron--}}
+    <div class="jumbotron container panel">
+        <div class="container">
+            <div class="typewriter">
+                <h1>Codebusters</h1>
+            </div>
+            <h3>Test your skills by completing the next coding coding challenges. You will earn points for all correct
+                answers. Move up the rankings as you compete with other web developers. Good luck!
+            </h3>
+            {{#if currentUser}}
+            <a class="btn btn-primary btn-lg" href="/users/code">Start Coding Challenge</a>
+            {{/if}}
+            {{#unless currentUser}}
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                Start Coding Challenge
+            </button>
+            {{/unless}}
         </div>
-        <h3>Test your skills by completing the next coding coding challenges. You will earn points for all correct 
-        answers. Move up the rankings as you compete with other web developers. Good luck! 
-        </h3>
-
-        <a href="/"><button class="btn btn-primary btn-lg">Home Page</button></a>
-        {{!-- <a href="/challenge1"><button class="btn btn-primary btn-lg">Code Challenge</button></a> --}}
-        <form action="/code" method="POST">
-            <input type="submit" value="Code Challenge" class="btn btn-primary btn-lg">
-        </form>
     </div>
-</div>
 
+<<<<<<< HEAD
 {{!-- Leaderboard Container--}}
 <div class="container panel">
     <table class="table table-bordered">
@@ -36,4 +39,30 @@
         </tbody>
     </table>
 </div>
+=======
+    {{!-- Leaderboard Container--}}
+    <div class="container panel table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="3" class="text-center">Leaderboard</th>
+                </tr>
+                <tr>
+                    <th scope="col">Ranking #</th>
+                    <th scope="col">Player Name</th>
+                    <th scope="col">Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each game}}
+                <tr>
+                    <td></td>
+                    <td>{{user.fullname}}</td>
+                    <td>{{total_score}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        </div>
+>>>>>>> f9566894a474db98b7e78c31f7ea95b2bd65034d
 </body>
