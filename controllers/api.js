@@ -15,6 +15,7 @@ router.post('/api/:gameId/challenge1', (req, res) => {
    let compare = result === addAnswer
    console.log('correct:', compare)
    console.log('reqeust:', res)
+   // req.flash err if err eval machine
    if (compare) {
       Answer.create({
          score: 5,
